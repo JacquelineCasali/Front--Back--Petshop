@@ -1,0 +1,8 @@
+# instalação 
+npm install express pg dotenv
+npm install nodemon -D
+
+node_modules
+
+README.md
+README copy.md
