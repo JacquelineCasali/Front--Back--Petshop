@@ -3,6 +3,6 @@ npm install express pg dotenv
 npm install nodemon -D
 
 node_modules
-
+.env
 README.md
 README copy.md
