@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const userController = require("../controllers/userController");
+// const userController = require("../controllers/userController");
 const petController = require("../controllers/petController");
 // pets
 
 router.get("/", petController.lista);
 // um pet ler 1
 router.get("/:id", petController.show);
-router.get("/user/:id", userController.show);
+// router.get("/user/:id", userController.show);
 
 router.post("/", petController.create);
 router.put("/:id", petController.update);

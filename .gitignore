@@ -1,7 +1,7 @@
 # instalação 
 npm install express pg dotenv
 npm install nodemon -D
-
+npm install cors
 node_modules
 .env
 README.md
