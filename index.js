@@ -4,7 +4,7 @@ const cors = require("cors");
 //  variavel de ambiente
 require("dotenv").config();
 
-const port = 3333;
+const port = process.env.port || 3333;
 // consulta no banco de dados
 // const pool = new Pool({
 //   connectionString: process.env.POSTGRES_URL,
