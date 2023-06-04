@@ -6,3 +6,8 @@ node_modules
 .env
 README.md
 README copy.md
+
+casaController.js
+api-pet.js
+userController.js
+.gitignore
