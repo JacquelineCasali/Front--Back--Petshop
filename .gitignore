@@ -2,8 +2,16 @@
 npm install express pg dotenv
 npm install nodemon -D
 npm install cors
+
+
+# banco de dados 
+
+
+# instalação da database
+npm install pg --save
+
 node_modules
-.env
+
 README.md
 README copy.md
 

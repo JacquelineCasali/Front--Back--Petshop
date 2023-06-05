@@ -18,6 +18,7 @@ Este Projeto onde é possivel listar, visualizar, criar, editar, excluir animais
 Express
 PostgreSQL
 Node.js
+typescript
 
 ## Instruções
 
