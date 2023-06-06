@@ -1,0 +1,32 @@
+footer {
+  /* border-bottom: 1px solid #bbbbbb; */
+  background: #f5f5f5;
+}
+
+/* rede sociais  */
+
+.social-container {
+  margin: 20px 0 0 0;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.redesocial {
+  margin: 10px 0 10px 20px;
+}
+/* passa o mouse porcima  */
+.redesocial:hover {
+  transition: 0.5s;
+  /* aumenta o botao em 40% */
+  transform: Scale(1.4);
+}
+
+/* comportamento ativo com o mouse clicado */
+.redesocial:active {
+  color: green;
+}
+
+.social {
+  color: #bbbbbb;
+}

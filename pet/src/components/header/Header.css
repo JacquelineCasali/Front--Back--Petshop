@@ -1,0 +1,21 @@
+header {
+  border-bottom: 1px solid #bbbbbb;
+  background: #f5f5f5;
+}
+nav.header {
+  padding: 20px;
+  text-align: right;
+  margin-right: 270px;
+}
+
+.link-sair {
+  /* background-color: #ffffff; */
+  color: #bbbbbb;
+  font-size: 26px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.link-sair:hover {
+  color: blue;
+}
