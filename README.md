@@ -24,6 +24,8 @@ Sequelize
 
 ## Para rodar no FrontEnd
 
+npm start
+
 ## Para rodar no BackEnd
 
 Instale o npm install
