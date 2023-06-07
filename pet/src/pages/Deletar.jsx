@@ -7,8 +7,7 @@ import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import "../styles/reset.css";
 import "../styles/lista.css";
-import * as Icon from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
+
 const listapets = [
   {
     nameanimal: "Rex",

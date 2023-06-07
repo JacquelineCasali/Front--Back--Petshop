@@ -1,31 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // importando o titulo
 import { Helmet, HelmetProvider } from "react-helmet-async";
-
 // importando estilo
 import "../styles/reset.css";
 import "../styles/App.css";
-import Axios from "axios";
+
 // import { useNavigate } from "react-router-dom";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
-// import Axios from "axios";
+import axios from "axios";
 
 function Cadastrar() {
-  const handClikCadastrar = (values) => {
-    // const navigate = useNavigate();
-    Axios.post("http://localhost:9000/cadastro", {
-      // intercepitação do evento
-      nameanimal: values.nameanimal,
-      idade: values.idade,
-      animal: values.animal,
-      raca: values.raca,
-      namedono: values.namedono,
-      telefone: values.telefone,
-    }).then((response) => {
-      //   navigate("/");
+  // função do botão
+  // async function handClikCadastro() {
+  //   console.log("Salvo");
+  // }
+  // async function getTodos() {
+  //   // axios banco de dados
+  //   const response = await axios.get("https://petshop-proqsel.onrender.com/");
+  //   setTodos(response.data);
+  //   console.log(response.data);
+  // }
+  // Salvando
+
+  const [nameanimal, setNameanimal] = useState("");
+  const [idade, setIdade] = useState("");
+  const [animal, setAnimal] = useState("");
+  const [raca, setRaca] = useState("");
+  const [namedono, setNamedono] = useState("");
+  const [telefone, setTelefone] = useState("");
+
+  const handClikCadastro = (e) => {
+    axios.post("https://petshop-proqsel.onrender.com/", {}).then((response) => {
       console.log(response);
     });
+    // getTodos();
+    // setInputValue("");
   };
 
   return (
@@ -37,48 +47,59 @@ function Cadastrar() {
       <section className="editar">
         <h1 className="">Cadastrar Pet</h1>
 
-        <form className="login-fomr" onSubmit={handClikCadastrar}>
-          <label htmlFor="namedono">Nome do Dono:</label>
+        <form className="login-fomr" onSubmit={handClikCadastro}>
+          <label htmlFor="nameanimal">Nome do Animal:</label>
+
           <input
             className="input-padrao"
             type="text"
-            name="namedono"
-            id="namedono"
-            // value={idade}
+            name="nameanimal"
+            id="nameanimal"
+            value={nameanimal}
+            onChange={(e) => {
+              setNameanimal(e.target.value);
+            }}
             placeholder="Digite o Nome do Dono"
           />
-          <label htmlFor="telefone">Telefone:</label>
+          <label htmlFor="idade">Idade:</label>
           <input
             className="input-padrao"
             type="text"
-            name="telefone"
-            id="telefone"
-            // value={idade}
+            name="idade"
+            value={idade}
+            onChange={(e) => {
+              setIdade(e.target.value);
+            }}
             placeholder="Digite o Numero do Telefone"
           />
 
           <div className="coluna-animal">
             <div className="coluna-animal1">
-              <label htmlFor="nameanimal">Nome do Animal : </label>
+              <label htmlFor="nameanimal">Animal : </label>
               <input
                 className="input-padrao"
-                name="nameanimal"
+                name="animal"
                 type="text"
                 id="text"
-                // value={nameanimal}
+                value={animal}
+                onChange={(e) => {
+                  setAnimal(e.target.value);
+                }}
                 placeholder="Digite o nome do animal "
               />
             </div>
 
             <div className="coluna-animal1">
-              <label htmlFor="animal">
-                Animal:
+              <label htmlFor="raca">
+                Raça:
                 <input
                   className="input-animal1"
                   type="text"
-                  name="animal"
-                  id="animal"
-                  // value={idade}
+                  name="raca"
+                  value={raca}
+                  onChange={(e) => {
+                    setRaca(e.target.value);
+                  }}
                   placeholder="Digite o tipo do animal"
                 />
               </label>
@@ -86,26 +107,30 @@ function Cadastrar() {
           </div>
           <div className="coluna-animal">
             <div className="coluna-animal1">
-              <label htmlFor="idade">
-                Idade:
+              <label htmlFor="namedono">
+                Nome do Dono:
                 <input
                   className="input-animal1"
                   type="text"
-                  name="idade"
-                  id="idade"
-                  // value={listapets.idade}
+                  name="namedono"
+                  value={namedono}
+                  onChange={(e) => {
+                    setNamedono(e.target.value);
+                  }}
                   placeholder="Digite a idade do Animal"
                 />
               </label>
             </div>
             <div className="coluna-animal1">
-              <label htmlFor="raca">Raça do Animal:</label>
+              <label htmlFor="telefone">Telefone:</label>
               <input
                 className="input-padrao"
                 type="text"
-                name="raca"
-                id="raca"
-                // value={idade}
+                name="telefone"
+                value={telefone}
+                onChange={(e) => {
+                  setTelefone(e.target.value);
+                }}
                 placeholder="Digite Raça do Animal"
               />
             </div>
@@ -120,5 +145,4 @@ function Cadastrar() {
     </div>
   );
 }
-
 export default Cadastrar;
