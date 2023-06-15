@@ -6,10 +6,10 @@ footer {
 /* rede sociais  */
 
 .social-container {
-  margin: 20px 0 0 0;
+  margin: 10px 0 0 0;
   font-family: "Montserrat", sans-serif;
   text-align: center;
-  padding: 20px;
+  padding: 2px 20px 20px 20px;
 }
 
 .redesocial {
@@ -29,4 +29,13 @@ footer {
 
 .social {
   color: #bbbbbb;
+}
+
+@media screen and (max-width: 480px) {
+  .redesocial {
+    margin: 10px 0 10px 10px;
+  }
+}
+
+@media screen and (max-width: 736px) {
 }

@@ -1,16 +1,12 @@
 const exprees = require("express");
 const cors = require("cors");
 
-const { Pool } = require("pg");
 const bodyParser = require("body-parser");
-const db = require("./src/models");
+
 //  variavel de ambiente
 require("dotenv").config();
-const PORT = process.env.PORT || 5432;
+const PORT = process.env.PORT || 5430;
 // consulta no banco de dados
-const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL,
-});
 const petRoute = require("./src/routes/petRoute");
 const app = exprees();
 

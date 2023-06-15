@@ -1,0 +1,75 @@
+.tela {
+  margin: 20px 150px;
+}
+
+.item {
+  border: 2px solid green;
+  width: 50%;
+  /* align-item: center; */
+  margin: 20px 20px 20px 250px;
+}
+.lista1 {
+  display: flex;
+  margin: 10px 10px 10px 20px;
+}
+.lista {
+  font-size: 24px;
+  margin: 5px;
+
+  /* text-align: center; */
+}
+
+.link {
+  margin-left: 120px;
+  vertical-align: super;
+  font-size: 20px;
+  /* padding: 5px; */
+}
+
+.volta {
+  margin: 0 70px 0;
+  vertical-align: super;
+  font-size: 20px;
+}
+
+/* passa o mouse porcima  */
+
+.volta:hover,
+.link:hover {
+  transition: 0.5s;
+  /* aumenta o botao em 40% */
+  transform: Scale(1.4);
+  font-size: 20px;
+}
+
+/* comportamento ativo com o mouse clicado */
+.volta:active,
+.link:active {
+  color: green;
+}
+
+@media screen and (max-width: 480px) {
+  .item {
+    width: 70%;
+    margin: 0 15px;
+  }
+  .lista1 {
+    display: block;
+  }
+  .lista {
+    margin: 5px;
+  }
+  .volta {
+    margin: 15px;
+  }
+  .link {
+    margin-left: 90px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .item {
+    width: auto;
+    margin: 0 15px;
+  }
+}

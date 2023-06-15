@@ -1,9 +1,6 @@
 const { Pool } = require("pg");
-const configDB = require("../config/database");
 
-const Pets = require("../models/pets");
-
-// consulta no banco de dados
+// conseção ao banco de dados
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
 });
@@ -54,9 +51,9 @@ const petController = {
           "INSERT INTO pets(nameanimal, idade, animal, raca, namedono, telefone) VALUES ($1,$2,$3,$4,$5,$6) RETURNING * ",
           [nameanimal, idade, animal, raca, namedono, telefone]
         );
-        return res.status(200).send({ msg: "Usuário cadastrado com sucesso " });
+        return res.status(200).send({ msg: "Pet cadastrado com sucesso " });
       } catch (err) {
-        return res.status(400).send({ msg: "Usuário já cadastrado " });
+        return res.status(400).send({ msg: "Pet já cadastrado " });
       }
     }),
 
@@ -72,9 +69,9 @@ const petController = {
           "UPDATE pets SET nameanimal=($1), idade=($2), animal=($3), raca=($4), namedono=($5), telefone=($6) WHERE pets_id=($7) RETURNING * ",
           [nameanimal, idade, animal, raca, namedono, telefone, id]
         );
-        return res.status(200).send({ msg: "Usuário Atulizado com sucesso " });
+        return res.status(200).send({ msg: "Pet Atulizado com sucesso " });
       } catch (err) {
-        return res.status(400).send({ msg: "Usuário já cadastrado " });
+        return res.status(400).send({ msg: "Pet já cadastrado " });
       }
     }),
 
@@ -86,7 +83,7 @@ const petController = {
 
       try {
         await pool.query("DELETE FROM pets WHERE pets_id=($1)", [id]);
-        return res.status(200).send({ msg: "Usuário Deletado com sucesso " });
+        return res.status(200).send({ msg: "Pet Deletado com sucesso " });
       } catch (err) {
         return res.status(400).send(err);
       }

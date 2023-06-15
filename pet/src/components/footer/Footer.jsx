@@ -27,7 +27,7 @@ const Footer = () => {
           />
         </Link>
 
-        <p className="social">©Desnvolvido por Jacqueline 2024 </p>
+        <p className="social">©Desnvolvido por Jacqueline 2023 </p>
       </div>
     </footer>
   );

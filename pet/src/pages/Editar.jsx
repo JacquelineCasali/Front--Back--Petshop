@@ -1,134 +1,154 @@
-import React, { useState, useEffect } from "react";
-// importando o titulo
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
-// importando estilo
 import "../styles/reset.css";
 import "../styles/App.css";
 
-// import { useNavigate } from "react-router-dom";
-import Header from "../components/header/Header";
-import Footer from "../components/footer/Footer";
-import axios from "axios";
-
-function Editar() {
-  async function getTodos() {
-    // axios banco de dados
-    const response = await axios.get("https://petshop-proqsel.onrender.com/");
-    setTodos(response.data);
-    console.log(response.data);
-  }
-  const [namedono, setNamedono] = useState("");
-
-  const handClikEditar = (values) => {
-    // const navigate = useNavigate();
-    axios
-      .put("https://petshop-proqsel.onrender.com/", {
-        // intercepitação do evento
-        // nameanimal: values.nameanimal,
-        // idade: values.idade,
-        // animal: values.animal,
-        // raca: values.raca,
-        // namedono: values.namedono,
-        telefone: values.telefone,
-      })
-      .then((response) => {
-        //   navigate("/");
-        console.log(response);
-      });
-  };
-  //  importando do banco
-  const [todos, setTodos] = useState([]);
-  // useEffect chama a função do banco
+function Pet() {
+  const { id } = useParams();
+  // banco de dados ler
   useEffect(() => {
-    getTodos();
+    axios
+      .get("https://petshop-proqsel.onrender.com/" + id)
+
+      .then((res) => {
+        console.log(res);
+        setValues(res.data[0]);
+      })
+      .catch((err) => console.log(err));
   }, []);
+
+  const [values, setValues] = useState({
+    nameanimal: "",
+    idade: "",
+    animal: "",
+    raca: "",
+    namedono: "",
+    telefone: "",
+  });
+
+  // mudar de pagina
+  const navigate = useNavigate();
+  // editar
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    axios
+      .put("https://petshop-proqsel.onrender.com/" + id, values)
+      .then((res) => {
+        console.log(res);
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="App">
       <Header />
+
       <HelmetProvider>
         <Helmet title="Editar Pet" />
       </HelmetProvider>
-      <section className="editar">
-        <h1 className="">Editar Pet</h1>
 
-        {todos.map((pets) => {
-          return (
-            <form className="login-fomr" onSubmit={handClikEditar}>
-              <label htmlFor="namedono">Nome do Dono:</label>
+      <section className="editar">
+        <h1 className="titulo">Editar Pet</h1>
+
+        <form className="login-fomr" onSubmit={handleUpdate}>
+          <label htmlFor="">Nome do Animal:</label>
+
+          <input
+            className="input-padrao"
+            type="text"
+            value={values.nameanimal}
+            onChange={(e) => {
+              setValues({ ...values, nameanimal: e.target.value });
+            }}
+            placeholder="Digite o Nome do Dono"
+            required
+          />
+          <label htmlFor="idade">Idade:</label>
+          <input
+            className="input-padrao"
+            type="text"
+            value={values.idade}
+            onChange={(e) => {
+              setValues({ ...values, idade: e.target.value });
+            }}
+            placeholder="Digite o Numero do Telefone"
+            required
+          />
+          <div className="coluna-animal">
+            <div className="coluna-animal1">
+              <label htmlFor="nameanimal">Animal : </label>
               <input
                 className="input-padrao"
+                name="animal"
                 type="text"
-                name="namedono"
-                value={pets.namedono}
+                value={values.animal}
+                onChange={(e) => {
+                  setValues({ ...values, animal: e.target.value });
+                }}
+                placeholder="Digite o nome do animal "
+                required
               />
+            </div>
+
+            <div className="coluna-animal1">
+              <label htmlFor="raca">
+                Raça:
+                <input
+                  className="input-animal1"
+                  type="text"
+                  name="raca"
+                  value={values.raca}
+                  onChange={(e) => {
+                    setValues({ ...values, raca: e.target.value });
+                  }}
+                  placeholder="Digite o tipo do animal"
+                  required
+                />
+              </label>
+            </div>
+          </div>
+          <div className="coluna-animal">
+            <div className="coluna-animal1">
+              <label htmlFor="namedono">
+                Nome do Dono:
+                <input
+                  className="input-animal1"
+                  type="text"
+                  value={values.namedono}
+                  onChange={(e) => {
+                    setValues({ ...values, namedono: e.target.value });
+                  }}
+                  placeholder="Digite a idade do Animal"
+                  required
+                />
+              </label>
+            </div>
+            <div className="coluna-animal1">
               <label htmlFor="telefone">Telefone:</label>
               <input
                 className="input-padrao"
                 type="text"
                 name="telefone"
-                id="telefone"
-                value={pets.telefone}
+                value={values.telefone}
+                onChange={(e) => {
+                  setValues({ ...values, telefone: e.target.value });
+                }}
+                placeholder="Digite Raça do Animal"
+                required
               />
-
-              <div className="coluna-animal">
-                <div className="coluna-animal1">
-                  <label htmlFor="nameanimal">Nome do Animal : </label>
-                  <input
-                    className="input-padrao"
-                    name="nameanimal"
-                    type="text"
-                    id="text"
-                    value={pets.nameanimal}
-                  />
-                </div>
-
-                <div className="coluna-animal1">
-                  <label htmlFor="animal">
-                    Animal:
-                    <input
-                      className="input-animal1"
-                      type="text"
-                      name="animal"
-                      id="animal"
-                      value={pets.animal}
-                    />
-                  </label>
-                </div>
-              </div>
-              <div className="coluna-animal">
-                <div className="coluna-animal1">
-                  <label htmlFor="idade">
-                    Idade:
-                    <input
-                      className="input-animal1"
-                      type="text"
-                      name="idade"
-                      id="idade"
-                      value={pets.idade}
-                    />
-                  </label>
-                </div>
-                <div className="coluna-animal1">
-                  <label htmlFor="raca">Raça do Animal:</label>
-                  <input
-                    className="input-padrao"
-                    type="text"
-                    name="raca"
-                    id="raca"
-                    value={pets.raca}
-                  />
-                </div>
-              </div>
-
-              <button className="button-senha">Editar</button>
-            </form>
-          );
-        })}
+            </div>
+          </div>
+          <button className="button-senha">Editar</button>
+        </form>
       </section>
       <Footer />
     </div>
   );
 }
-
-export default Editar;
+export default Pet;

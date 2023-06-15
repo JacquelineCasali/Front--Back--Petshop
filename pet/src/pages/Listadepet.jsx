@@ -37,6 +37,7 @@ function Lista() {
     setTodos(response.data);
     console.log(response.data);
   }
+  // deletar
   async function deletePet(pets) {
     await axios.delete(`https://petshop-proqsel.onrender.com/${pets.pets_id}`);
     getTodos();
@@ -56,13 +57,13 @@ function Lista() {
       </HelmetProvider>
 
       <section>
-        <h1 className="titulo">Lista de Petes</h1>
+        <h1 className="titulo">Lista de Pets</h1>
 
         <div className="table-container">
           <table>
             <thead>
               <tr>
-                <th>Id</th>
+                {/* <th>Id</th> */}
                 <th className="nome">Nome do Animal</th>
                 <th>Idade</th>
                 <th>Animal</th>
@@ -73,45 +74,59 @@ function Lista() {
               </tr>
             </thead>
 
-            {todos.map((pets) => {
+            {todos.map((pets, index) => {
               return (
                 <tbody>
-                  <tr cursor="pointer">
-                    <td width="5%" class="fw-bold">
+                  <tr key={index} cursor="pointer">
+                    {/* <td width="5%" class="fw-bold">
                       {" "}
                       {pets.pets_id}
-                    </td>
-                    <td width="15%" data-title="nomeanimal">
+                    </td> */}
+                    <td width="13%" data-title="nomeanimal">
                       {pets.nameanimal}
                     </td>
-                    <td width="7%" data-title="idade">
+                    <td width="12%" data-title="idade">
                       {pets.idade}
                     </td>
                     <td width="10%" data-title="animal">
                       {pets.animal}
                     </td>
-                    <td width="15%" data-title="raca">
+                    <td width="16%" data-title="raca">
                       {pets.raca}
                     </td>
-                    <td width="25%" data-title="namedono">
+                    <td width="15%" data-title="namedono">
                       {pets.namedono}
                     </td>
-                    <td width="12%" data-title="Telefone">
+                    <td width="16%" data-title="Telefone">
                       {pets.telefone}
                     </td>
 
                     <td className="table-actions">
-                      <button onClick={() => deletePet(pets)}>
+                      <Link to={`/${pets.pets_id}`}>
+                        <Icon.Book
+                          color="black"
+                          size={30}
+                          cursor="pointer"
+                          className="icone"
+                        />
+                      </Link>
+
+                      <Link to={`/edit/${pets.pets_id}`}>
+                        <Icon.Pencil
+                          color="black"
+                          size={30}
+                          cursor="pointer"
+                          className="icone"
+                        />
+                      </Link>
+
+                      <Link onClick={() => deletePet(pets)}>
                         <Icon.Trash3
                           color="black"
                           size={30}
                           cursor="pointer"
                           className="icone"
                         />
-                      </button>
-
-                      <Link to="/editar">
-                        <Icon.Pencil color="black" size={30} cursor="pointer" />
                       </Link>
                     </td>
                   </tr>
