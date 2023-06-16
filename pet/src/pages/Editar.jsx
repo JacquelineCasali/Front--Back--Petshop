@@ -66,8 +66,6 @@ function Pet() {
             onChange={(e) => {
               setValues({ ...values, nameanimal: e.target.value });
             }}
-            placeholder="Digite o Nome do Dono"
-            required
           />
           <label htmlFor="idade">Idade:</label>
           <input
@@ -77,8 +75,6 @@ function Pet() {
             onChange={(e) => {
               setValues({ ...values, idade: e.target.value });
             }}
-            placeholder="Digite o Numero do Telefone"
-            required
           />
           <div className="coluna-animal">
             <div className="coluna-animal1">
@@ -91,8 +87,6 @@ function Pet() {
                 onChange={(e) => {
                   setValues({ ...values, animal: e.target.value });
                 }}
-                placeholder="Digite o nome do animal "
-                required
               />
             </div>
 
@@ -107,8 +101,6 @@ function Pet() {
                   onChange={(e) => {
                     setValues({ ...values, raca: e.target.value });
                   }}
-                  placeholder="Digite o tipo do animal"
-                  required
                 />
               </label>
             </div>
@@ -124,8 +116,6 @@ function Pet() {
                   onChange={(e) => {
                     setValues({ ...values, namedono: e.target.value });
                   }}
-                  placeholder="Digite a idade do Animal"
-                  required
                 />
               </label>
             </div>
@@ -139,8 +129,6 @@ function Pet() {
                 onChange={(e) => {
                   setValues({ ...values, telefone: e.target.value });
                 }}
-                placeholder="Digite Raça do Animal"
-                required
               />
             </div>
           </div>

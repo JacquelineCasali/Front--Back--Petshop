@@ -49,7 +49,7 @@ function Cadastrar() {
             onChange={(e) => {
               setValues({ ...values, nameanimal: e.target.value });
             }}
-            placeholder="Digite o Nome do Dono"
+            placeholder="Digite o Nome do Animal"
             required
           />
           <label htmlFor="idade">Idade:</label>
@@ -59,7 +59,7 @@ function Cadastrar() {
             onChange={(e) => {
               setValues({ ...values, idade: e.target.value });
             }}
-            placeholder="Digite o Numero do Telefone"
+            placeholder="Digite a idade"
             required
           />
 
@@ -88,7 +88,7 @@ function Cadastrar() {
                   onChange={(e) => {
                     setValues({ ...values, raca: e.target.value });
                   }}
-                  placeholder="Digite o tipo do animal"
+                  placeholder="Digite a Raça"
                   required
                 />
               </label>
@@ -104,7 +104,7 @@ function Cadastrar() {
                   onChange={(e) => {
                     setValues({ ...values, namedono: e.target.value });
                   }}
-                  placeholder="Digite a idade do Animal"
+                  placeholder="Digite o nome do dono "
                   required
                 />
               </label>
@@ -118,7 +118,7 @@ function Cadastrar() {
                 onChange={(e) => {
                   setValues({ ...values, telefone: e.target.value });
                 }}
-                placeholder="Digite Raça do Animal"
+                placeholder="Digite o telefone"
                 required
               />
             </div>
